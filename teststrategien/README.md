@@ -33,3 +33,42 @@
 | 5  | Benutzer kann eine bestehende Buchung stornieren | Erfolgreiche Stornierung                       |                      |         |                          |
 
 ---
+
+# Aufgabe 3: Testfälle und Verbesserungsvorschläge
+
+## **Black-Box Testfälle**
+
+| ID | Beschreibung                                  | Erwartetes Resultat                              |
+|----|----------------------------------------------|-------------------------------------------------|
+| 1  | Konto erstellen                              | Neues Konto wird mit Startguthaben erstellt     |
+| 2  | Geld einzahlen                               | Kontostand erhöht sich um den Einzahlungsbetrag |
+| 3  | Geld abheben, wenn Guthaben ausreichend      | Kontostand verringert sich um den Abhebebetrag  |
+| 4  | Geld abheben, wenn Guthaben nicht ausreichend| Fehlernachricht "Kontostand zu niedrig"         |
+| 5  | Wechselkurs abfragen                         | Korrekte Umrechnung des Betrags in Zielwährung  |
+
+## **White-Box Testfälle**
+
+| ID | Methode                       | Beschreibung                                                    |
+|----|-------------------------------|-----------------------------------------------------------------|
+| 1  | `Account.deposit(double)`     | Testet die Logik für Einzahlungen                               |
+| 2  | `Account.withdraw(double)`    | Testet, ob Abhebungen korrekt durchgeführt oder abgelehnt werden|
+| 3  | `Bank.getAccount(int)`        | Testet, ob das richtige Konto basierend auf der ID zurückgegeben wird |
+| 4  | `ExchangeRateOkhttp.getExchangeRate(String, String)` | Testet die Abfrage und Verarbeitung von Wechselkursdaten |
+| 5  | `Counter.transferAmount(Account, Account)` | Testet die korrekte Überweisung zwischen zwei Konten           |
+
+## **Verbesserungsvorschläge**
+
+1. **Fehlermanagement verbessern:**  
+   Beispielsweise sollten spezifische Fehlermeldungen wie `AccountExeption` klarer strukturiert werden.
+   
+2. **Modularisierung und Wiederverwendung:**  
+   Reduzieren Sie redundante Methodenaufrufe in der `Counter`-Klasse.
+   
+3. **Automatisierte Tests:**  
+   Verwenden Sie Frameworks wie JUnit, um Unit-Tests für Methoden wie `withdraw`, `deposit` und `getExchangeRate` zu schreiben.
+
+4. **Dokumentation:**  
+   Methoden wie `createAccount` in der `Bank`-Klasse sollten besser dokumentiert werden.
+
+5. **Testautomatisierung:**  
+   Implementieren Sie automatisierte Tests mit Mocking für externe Abfragen in der Klasse `ExchangeRateOkhttp`.
