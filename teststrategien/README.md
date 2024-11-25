@@ -38,13 +38,13 @@
 
 ## **Black-Box Testfälle**
 
-| ID | Beschreibung                                  | Erwartetes Resultat                              |
-|----|----------------------------------------------|-------------------------------------------------|
-| 1  | Konto erstellen                              | Neues Konto wird mit Startguthaben erstellt     |
-| 2  | Geld einzahlen                               | Kontostand erhöht sich um den Einzahlungsbetrag |
-| 3  | Geld abheben, wenn Guthaben ausreichend      | Kontostand verringert sich um den Abhebebetrag  |
-| 4  | Geld abheben, wenn Guthaben nicht ausreichend| Fehlernachricht "Kontostand zu niedrig"         |
-| 5  | Wechselkurs abfragen                         | Korrekte Umrechnung des Betrags in Zielwährung  |
+| ID | Beschreibung                                  | Erwartetes Resultat                              | Effektives Resultat |
+|----|----------------------------------------------|-------------------------------------------------|-----|
+| 1  | Konto erstellen                              | Neues Konto wird mit Startguthaben erstellt     | Konto wurde erstellt|
+| 2  | Geld einzahlen                               | Kontostand erhöht sich um den Einzahlungsbetrag | Kontostans wurde richtig updated|
+| 3  | Geld abheben, wenn Guthaben ausreichend      | Kontostand verringert sich um den Abhebebetrag  | Richtige Summe wurde abgehoben|
+| 4  | Geld abheben, wenn Guthaben nicht ausreichend| Fehlernachricht "Kontostand zu niedrig"         | Fehlermeldung wurde richtig angeziegt|
+| 5  | Wechselkurs abfragen                         | Korrekte Umrechnung des Betrags in Zielwährung  | Umrechnung der Currency wird angezeigt|
 
 ## **White-Box Testfälle**
 
