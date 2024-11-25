@@ -26,11 +26,11 @@
 
 | ID | Beschreibung                                    | Erwartetes Resultat                              | Effektives Resultat | Status  | Mögliche Ursache         |
 |----|------------------------------------------------|-------------------------------------------------|----------------------|---------|--------------------------|
-| 1  | Benutzer kann sich erfolgreich registrieren    | Erfolgreiche Registrierung                      |                      |         |                          |
-| 2  | Verfügbare Autos für gewähltes Datum anzeigen  | Liste der verfügbaren Autos wird korrekt angezeigt |                      |         |                          |
-| 3  | Buchung eines Autos mit korrekten Daten        | Erfolgreiche Buchung                            |                      |         |                          |
-| 4  | Fehlermeldung bei ungültiger Kreditkarte       | Fehlermeldung "Ungültige Kreditkarte"           |                      |         |                          |
-| 5  | Benutzer kann eine bestehende Buchung stornieren | Erfolgreiche Stornierung                       |                      |         |                          |
+| 1  | Benutzer kann sich erfolgreich registrieren    | Erfolgreiche Registrierung  | Konto wurde erfolgreich erstellt | Erfolg        |      -                    |
+| 2  | Verfügbare Autos für gewählten Preisraum anzeigen  | Liste der verfügbaren Autos wird korrekt angezeigt |  Liste zeigt Autos mit höherem Preis | Fehler   |  Falsche Filtering Logik                       |
+| 3  | Buchung eines Autos mit korrekten Daten        | Erfolgreiche Buchung                            | Buchung war erfolgreich |  Erfolg       |     -                     |
+| 4  | Fehlermeldung bei ungültiger Kreditkarte       | Fehlermeldung "Ungültige Kreditkarte"           |    Fehlermeldung wurde angezeigt    | Erfolg        |  -                        |
+| 5  | Benutzer kann eine bestehende Buchung stornieren | Erfolgreiche Stornierung     | Buchung wurde storniert     | Erfolg        |     -                     |
 
 ---
 
