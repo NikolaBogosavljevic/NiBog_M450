@@ -46,7 +46,7 @@ Das Ziel war es, das Backend durch erhöhten Traffic zu belasten und die Funktio
 
 2. **Konfiguration von Testläufen**:
    - Mithilfe der **Collection Runner**-Funktion in Postman wurde der Test automatisiert und mehrfach ausgeführt, um den Endpunkt mit hohem Traffic zu belasten.
-   - Iterationen: 50
+   - Iterationen: 1000
    - Verzögerung zwischen den Anfragen: 0 ms
 
 3. **Funktionalitäten erkundet**:
@@ -57,7 +57,6 @@ Das Ziel war es, das Backend durch erhöhten Traffic zu belasten und die Funktio
      });
      ```
    - **Datenvalidierung**: Es wurde geprüft, ob die hinzugefügten Studenten korrekt in der Liste erscheinen.
-   - **Export der Ergebnisse**: Die Testergebnisse wurden als JSON-Datei exportiert, um sie weiter analysieren zu können.
 
 4. **Beobachtungen**:
    - **POST /addstudents**: Alle Anfragen wurden erfolgreich verarbeitet, und neue Studenten wurden hinzugefügt.
