@@ -11,12 +11,12 @@
 
 ### **Konkrete Testfälle**
 
-| ID  | Preis (CHF)  | Erwarteter Rabatt (%) | Berechneter Preis (CHF) |
-|-----|--------------|------------------------|--------------------------|
-| 1   | 14'999       | 0%                     | 14'999                   |
-| 2   | 18'000       | 5%                     | 17'100                   |
-| 3   | 22'500       | 7%                     | 20'925                   |
-| 4   | 27'000       | 8.5%                   | 24'705                   |
+| ID  | Preis (CHF)  | Erwarteter Rabatt (%) | 
+|-----|--------------|------------------------|
+| 1   | 14'999       | 0%                     | 
+| 2   | 18'000       | 5%                     |
+| 3   | 22'500       | 7%                     | 
+| 4   | 27'000       | 8.5%                   | 
 
 ---
 
@@ -26,11 +26,11 @@
 
 | ID | Beschreibung                                    | Erwartetes Resultat                              | Effektives Resultat | Status  | Mögliche Ursache         |
 |----|------------------------------------------------|-------------------------------------------------|----------------------|---------|--------------------------|
-| 1  | Benutzer kann sich erfolgreich registrieren    | Erfolgreiche Registrierung                      |                      |         |                          |
-| 2  | Verfügbare Autos für gewähltes Datum anzeigen  | Liste der verfügbaren Autos wird korrekt angezeigt |                      |         |                          |
-| 3  | Buchung eines Autos mit korrekten Daten        | Erfolgreiche Buchung                            |                      |         |                          |
-| 4  | Fehlermeldung bei ungültiger Kreditkarte       | Fehlermeldung "Ungültige Kreditkarte"           |                      |         |                          |
-| 5  | Benutzer kann eine bestehende Buchung stornieren | Erfolgreiche Stornierung                       |                      |         |                          |
+| 1  | Benutzer kann sich erfolgreich registrieren    | Erfolgreiche Registrierung  | Konto wurde erfolgreich erstellt | Erfolg        |      -                    |
+| 2  | Verfügbare Autos für gewählten Preisraum anzeigen  | Liste der verfügbaren Autos wird korrekt angezeigt |  Liste zeigt Autos mit höherem Preis | Fehler   |  Falsche Filtering Logik                       |
+| 3  | Buchung eines Autos mit korrekten Daten        | Erfolgreiche Buchung                            | Buchung war erfolgreich |  Erfolg       |     -                     |
+| 4  | Fehlermeldung bei ungültiger Kreditkarte       | Fehlermeldung "Ungültige Kreditkarte"           |    Fehlermeldung wurde angezeigt    | Erfolg        |  -                        |
+| 5  | Benutzer kann eine bestehende Buchung stornieren | Erfolgreiche Stornierung     | Buchung wurde storniert     | Erfolg        |     -                     |
 
 ---
 
@@ -38,13 +38,13 @@
 
 ## **Black-Box Testfälle**
 
-| ID | Beschreibung                                  | Erwartetes Resultat                              |
-|----|----------------------------------------------|-------------------------------------------------|
-| 1  | Konto erstellen                              | Neues Konto wird mit Startguthaben erstellt     |
-| 2  | Geld einzahlen                               | Kontostand erhöht sich um den Einzahlungsbetrag |
-| 3  | Geld abheben, wenn Guthaben ausreichend      | Kontostand verringert sich um den Abhebebetrag  |
-| 4  | Geld abheben, wenn Guthaben nicht ausreichend| Fehlernachricht "Kontostand zu niedrig"         |
-| 5  | Wechselkurs abfragen                         | Korrekte Umrechnung des Betrags in Zielwährung  |
+| ID | Beschreibung                                  | Erwartetes Resultat                              | Effektives Resultat |
+|----|----------------------------------------------|-------------------------------------------------|-----|
+| 1  | Konto erstellen                              | Neues Konto wird mit Startguthaben erstellt     | Konto wurde erstellt|
+| 2  | Geld einzahlen                               | Kontostand erhöht sich um den Einzahlungsbetrag | Kontostans wurde richtig updated|
+| 3  | Geld abheben, wenn Guthaben ausreichend      | Kontostand verringert sich um den Abhebebetrag  | Richtige Summe wurde abgehoben|
+| 4  | Geld abheben, wenn Guthaben nicht ausreichend| Fehlernachricht "Kontostand zu niedrig"         | Fehlermeldung wurde richtig angeziegt|
+| 5  | Wechselkurs abfragen                         | Korrekte Umrechnung des Betrags in Zielwährung  | Umrechnung der Currency wird angezeigt|
 
 ## **White-Box Testfälle**
 
