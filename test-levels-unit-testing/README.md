@@ -1,28 +1,26 @@
 # Test-Levels
 ## Aufgabe 1
 
-### Was wird getestet?
-- Funktionalität, Performance, Sicherheit, Usability, Kompatibilität.
+### Was wird wie in Ihrer Firma getestet? Cognizant/Accenture
+- **Was:** Funktionalität, Performance, Sicherheit, Usability, Kompatibilität.
+- **Wie:** Manuell und automatisiert (Unit-, Integration-, Systemtests).
 
-### Wie wird getestet?
-- Manuell und automatisiert (z. B. Unit-, Integration-, Systemtests).
-
-### Test Levels:
+### Mit welchen Test Levels hatten Sie bereits zu tun?
 - Unit, Integration, System, Acceptance.
 
 ### Wann werden Tests ausgeführt?
 - Während der Entwicklung (CI/CD), vor Releases, nach Updates.
 
-### Dedizierte QA-Teams?
-- Ja, oft eigene QA-Teams; in kleineren Projekten Entwickler.
+### Haben Sie dedizierte Testing- oder QA-Teams?
+- Ja, separate QA-Teams; in kleineren Projekten testen Entwickler.
 
-### Testing Life Cycle:
-1. **Planung:** Analyse, Teststrategie.
-2. **Design:** Testfälle und Umgebung.
-3. **Implementierung:** Tests entwickeln.
-4. **Ausführung:** Tests durchführen.
-5. **Reporting:** Ergebnisse analysieren.
-6. **Wartung:** Tests anpassen, Regressionstests.
+### Wie sieht Ihr Testing Life Cycle aus?
+1. Planung: Anforderungen analysieren, Teststrategie erstellen.
+2. Design: Testfälle schreiben, Testumgebungen vorbereiten.
+3. Implementierung: Tests entwickeln (manuell/automatisiert).
+4. Ausführung: Tests durchführen, Ergebnisse dokumentieren.
+5. Reporting: Fehler analysieren und dokumentieren.
+6. Wartung: Tests anpassen, Regressionstests ausführen.
 
 ---
 
@@ -31,23 +29,19 @@
 ### Begriffe und Abhängigkeiten
 
 #### Testing Approach
-- Strategien, z. B. Risk-Based, Agile.
+- Strategien, z. B. Risk-Based Testing, Exploratory Testing.
 
 #### Testing Levels
-- Unit, Integration, System, Acceptance.
+- Hierarchien: Unit, Integration, System, Acceptance.
 
 #### Testing Types, Techniques und Tactics
-- **Types:** Funktional, nicht-funktional (z. B. Security, Performance).
+- **Types:** Funktional (z. B. Regression), nicht-funktional (z. B. Performance).
 - **Techniques:** Black-Box, White-Box, Grey-Box.
-- **Tactics:** Automatisierung, Pair Testing.
+- **Tactics:** Automatisierung, exploratives Testen.
 
-#### Abhängigkeiten
-- **Approach** definiert Levels, Types, Techniques.
-- Types und Techniques werden pro Level angewendet.
-- Tactics unterstützen die Umsetzung.
-
----
-
-# Unit-Testing
+### Abhängigkeiten
+- **Approach** bestimmt Levels, Types und Techniques.
+- Types und Techniques sind Levels zugeordnet.
+- Tactics unterstützen die praktische Umsetzung.
 
 ---
