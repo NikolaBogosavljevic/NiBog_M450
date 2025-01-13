@@ -22,8 +22,6 @@
 5. Reporting: Fehler analysieren und dokumentieren.
 6. Wartung: Tests anpassen, Regressionstests ausführen.
 
----
-
 ## Aufgabe 2
 
 ### Begriffe und Abhängigkeiten
@@ -39,9 +37,58 @@
 - **Techniques:** Black-Box, White-Box, Grey-Box.
 - **Tactics:** Automatisierung, exploratives Testen.
 
-### Abhängigkeiten
-- **Approach** bestimmt Levels, Types und Techniques.
-- Types und Techniques sind Levels zugeordnet.
-- Tactics unterstützen die praktische Umsetzung.
+
+---
+
+# Unit-Testing
+
+
+## Aufgabe 2
+### Gängigste JUnit Features
+JUnit ist ein beliebtes Framework für Unit-Tests in Java. Es hilft dabei, einzelne Komponenten einer Software unabhängig zu testen. Hier sind die gängigsten Features:
+
+#### 1. **Annotations**
+- `@Test`: Markiert eine Methode als Test.
+- `@BeforeEach`: Führt eine Methode vor jedem Test aus.
+- `@AfterEach`: Führt eine Methode nach jedem Test aus.
+- `@BeforeAll`: Führt eine Methode einmal vor allen Tests in einer Testklasse aus (muss `static` sein).
+- `@AfterAll`: Führt eine Methode einmal nach allen Tests in einer Testklasse aus (muss `static` sein).
+
+#### 2. **Assertions**
+- `assertEquals(expected, actual)`: Überprüft, ob der erwartete und der tatsächliche Wert gleich sind.
+- `assertTrue(condition)`: Überprüft, ob eine Bedingung wahr ist.
+- `assertFalse(condition)`: Überprüft, ob eine Bedingung falsch ist.
+- `assertThrows(exception.class, () -> code)`: Prüft, ob eine Ausnahme geworfen wird.
+
+#### 3. **Parameterized Tests**
+- `@ParameterizedTest`: Markiert eine Methode als parametrisierten Test.
+- `@ValueSource`, `@CsvSource`, `@MethodSource`: Definieren die Eingabewerte.
+
+#### 4. **Test Lifecycle**
+- `@BeforeEach` / `@AfterEach`: Vorbereitung und Bereinigung vor/nach jedem Test.
+- `@BeforeAll` / `@AfterAll`: Vorbereitung und Bereinigung vor/nach allen Tests.
+
+#### 5. **Test Suites**
+- Gruppiert mehrere Testklassen und führt sie gemeinsam aus (`@Suite` in JUnit 5).
+
+### Kurze Anwendungsfälle / Beispiele für die jeweiligen Features
+
+### Beispiel für @Test
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class CalculatorTest {
+    @Test
+    void testAddition() {
+        Calculator calculator = new Calculator();
+        assertEquals(5, calculator.add(2, 3), "Addition sollte korrekt sein");
+    }
+}
+
+```
+
+### Verlinkung einer Referenzseite
+Für weitere Details und Beispiele besuchen Sie die [offizielle JUnit-Dokumentation](https://junit.org/junit5/docs/current/user-guide/).
 
 ---
