@@ -12,7 +12,7 @@
 - Während der Entwicklung (CI/CD), vor Releases, nach Updates.
 
 ### Haben Sie dedizierte Testing- oder QA-Teams?
-- Ja, separate QA-Teams; in kleineren Projekten testen Entwickler.
+- Nein.
 
 ### Wie sieht Ihr Testing Life Cycle aus?
 1. Planung: Anforderungen analysieren, Teststrategie erstellen.
