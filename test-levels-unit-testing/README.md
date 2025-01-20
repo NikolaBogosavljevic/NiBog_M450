@@ -103,3 +103,82 @@ public class CalculatorTest {
 Für weitere Details und Beispiele besuchen Sie die [offizielle JUnit-Dokumentation](https://junit.org/junit5/docs/current/user-guide/).
 
 ---
+
+
+# Übung 3: Banken Simulation
+
+## Funktionsweise der Software
+
+### **Hauptklassen**
+
+#### **<ins>Account</ins>**
+
+Hier werden die grundlegende Eigenschaften und Methoden eines Kontos definiert:
+
+- Attribute: ```id, balance```, ```bookings```
+- Methoden: ```deposit(int date, long amount)```, ```withdraw(int date, long amount)```, ```getId()```, ```getBalance()```, ```print()``` \
+Einzahlen und Zurückziehen vom Geld; Kontostand und Kontonummer bekommen.
+
+#### **<ins>SavingsAccount</ins>** (erbt von Account)
+
+Spezialisierte Kontoart für gespartes Guthaben:
+
+- Methoden: ```withdraw(int date, long ammount)``` \
+Guthaben prüfen, ruft Account.java wenn genügend Guthaben, verhindert Abhebungen wenn nicht.
+
+#### **<ins>SalaryAccount</ins>** (erbt von Account)
+
+Konto für Gehaltseinzahlungen:
+
+- Attribute: ```creditLimit``` -> Kreditlimit des Kontos, erlaubt Überziehungen nur bis definiertem (negativen) Betrag. 
+- Methoden: ```withdraw(int date, long amount)``` \
+Berechnet Guthaben nach Abhebung, verhindert falls Limit überschritten, ruft Account.java wenn Bedingung erfüllt.
+
+#### **<ins>PromoYouthSavingsAccount</ins>** (erbt von SavingsAccount)
+
+Jugend-Sparkonto mit Promotionen:
+
+- Methoden: ```deposit(int date, long amount)``` \
+Bei Einzahlungen wird ein Bonus von 1% des Betrags gewährt.
+
+#### **<ins>Bank</ins>**
+
+Verwaltung einer Sammlung von Konten:
+
+- Attribute: ```accounts``` (verwaltet Konten), ```nextAccountId``` (automatisch generierte Id für neue Konten) 
+- Methoden:
+    - Kontoerstellung: ```createSavingsAccount()```, ```createPromoYouthAccount()```, ```createSalaryAccount(long creditLimit)``` \
+      Jegliche Konten werden erstellt. 
+
+    - Transaktionen: ```deposit(String id, int date, long amount)```, ```withdraw(String id, int date, long amount)``` \
+      Führt Einzahlungen & Abhebungen auf/von einem Konto. 
+      
+    - Saldo-Abfragen: ```getBalance()```, ```getBalance(String id)``` \
+      Gesamter oder spezifischer Kontostand zurückgeben. 
+      
+    - Kontodruck: ```print(String id)```, ```print(String id, int year, int month)```, ```printTop5()```, ```printBottom5()``` \
+      Kontoauszug eines spezifischen Kontos oder nur für bestimmten Monat, fünf Konten mit dem höchsten/niedrigsten Saldo zurückgeben. 
+      
+#### **<ins>Booking</ins>**
+
+Repräsentiert eine Buchung:
+
+- Attribute: ```date```, ```amount``` 
+- Methoden: ```Booking(int date, long amount)```, ```getDate()```, ```getAmount()```, ```print(long balance)``` \
+  Buchung erstellen, Datum / Betrag einer Buchung zurückgeben, Buchungzeile mit akutellem Saldo drucken.
+
+#### **<ins>BankUtils</ins>**
+
+Dienstprogrammklasse mit hilfreichen Funktionen:
+
+- Attribute: ```TWO_DIGIT_FORMAT```, ```AMOUNT_FORMAT```
+- Methoden: ```formatBankDate(int date)```, ```formatAccount(long amount)``` \
+  formatiert Banktag-Datum (basiert auf Anzahl Tage seit 1.1.1970), formatiert lesbaren Betrag.
+
+### **Beziehungen**
+
+- Vererbungen: ```SavingsAccount```, ```SalaryAccount```, ```PromoYouthSAvingsAccount``` erben von ```Account```
+- Komposition: ```Bank``` enthält mehrere ```Account```-Objekte, ```Account```-Objekte können mit ```Booking```-Objekten verknüpft sein
+
+
+
