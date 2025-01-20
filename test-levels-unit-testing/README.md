@@ -55,55 +55,204 @@
 
 
 ## Aufgabe 2
-### Gängigste JUnit Features
-JUnit ist ein beliebtes Framework für Unit-Tests in Java. Es hilft dabei, einzelne Komponenten einer Software unabhängig zu testen. Hier sind die gängigsten Features:
 
-#### 1. **Annotations**
-- `@Test`: Markiert eine Methode als Test.
-- `@BeforeEach`: Führt eine Methode vor jedem Test aus.
-- `@AfterEach`: Führt eine Methode nach jedem Test aus.
-- `@BeforeAll`: Führt eine Methode einmal vor allen Tests in einer Testklasse aus (muss `static` sein).
-- `@AfterAll`: Führt eine Methode einmal nach allen Tests in einer Testklasse aus (muss `static` sein).
+## 1. **Test-Annotationen**
+> [!NOTE]
+> JUnit verwendet Annotations, um Testfälle und den Setup zu definieren.
 
-#### 2. **Assertions**
-- `assertEquals(expected, actual)`: Überprüft, ob der erwartete und der tatsächliche Wert gleich sind.
-- `assertTrue(condition)`: Überprüft, ob eine Bedingung wahr ist.
-- `assertFalse(condition)`: Überprüft, ob eine Bedingung falsch ist.
-- `assertThrows(exception.class, () -> code)`: Prüft, ob eine Ausnahme geworfen wird.
+### **@Test**
+Markiert eine Methode als Testmethode.
 
-#### 3. **Parameterized Tests**
-- `@ParameterizedTest`: Markiert eine Methode als parametrisierten Test.
-- `@ValueSource`, `@CsvSource`, `@MethodSource`: Definieren die Eingabewerte.
-
-#### 4. **Test Lifecycle**
-- `@BeforeEach` / `@AfterEach`: Vorbereitung und Bereinigung vor/nach jedem Test.
-- `@BeforeAll` / `@AfterAll`: Vorbereitung und Bereinigung vor/nach allen Tests.
-
-#### 5. **Test Suites**
-- Gruppiert mehrere Testklassen und führt sie gemeinsam aus (`@Suite` in JUnit 5).
-
-### Kurze Anwendungsfälle / Beispiele für die jeweiligen Features
-
-### Beispiel für @Test
+**Anwendungsfall:**
 ```java
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+@Test
+public void testAdd() {
+    Main main = new Main();
+    assertEquals(5.0f, main.add(2.0f, 3.0f));
+}
+```
 
-public class CalculatorTest {
-    @Test
-    void testAddition() {
-        Calculator calculator = new Calculator();
-        assertEquals(5, calculator.add(2, 3), "Addition sollte korrekt sein");
-    }
+### **@BeforeEach**
+Wird vor jeder Testmethode ausgeführt. Ideal für die Initialisierung von Objekten.
+
+**Anwendungsfall:**
+```java
+@BeforeEach
+public void setUp() {
+    main = new Main();
+}
+```
+
+### **@AfterEach**
+Wird nach jeder Testmethode ausgeführt. Nützlich zum Bereinigen von Ressourcen.
+
+**Anwendungsfall:**
+```java
+@AfterEach
+public void tearDown() {
+    calc = null;
+}
+```
+
+### **@BeforeAll**
+Wird einmal vor allen Testmethoden ausgeführt. Muss in einer statischen Methode verwendet werden.
+
+**Anwendungsfall:**
+```java
+@BeforeAll
+public static void initialize() {
+    database.connect();
+}
+```
+
+### **@AfterAll**
+Wird einmal nach allen Testmethoden ausgeführt. Muss ebenfalls statisch sein.
+
+**Anwendungsfall:**
+```java
+@AfterAll
+public static void cleanUp() {
+    database.disconnect();
+}
+```
+
+### **@Disabled**
+Deaktiviert einen Test oder eine Testklasse.
+
+**Anwendungsfall:**
+```java
+@Disabled("Feature in Entwicklung")
+@Test
+public void testNewFeature() {
+    // Test wird übersprungen
+}
+```
+
+---
+
+## **Assertions**
+Assertions dienen zur Überprüfung der erwarteten Ergebnisse.
+
+### **assertEquals**
+Vergleicht zwei Werte auf Gleichheit.
+
+**Anwendungsfall:**
+```java
+assertEquals(5, main.add(2, 3));
+```
+
+### **assertNotEquals**
+Überprüft, ob zwei Werte unterschiedlich sind.
+
+**Anwendungsfall:**
+```java
+assertNotEquals(4, main.subtract(5, 1));
+```
+
+### **assertTrue / assertFalse**
+Überprüft, ob ein Ausdruck wahr oder falsch ist.
+
+**Anwendungsfall:**
+```java
+assertTrue(list.isEmpty());
+assertFalse(list.contains("Element"));
+```
+
+### **assertThrows**
+Überprüft, ob eine bestimmte Ausnahme geworfen wird.
+
+**Anwendungsfall:**
+```java
+assertThrows(ArithmeticException.class, () -> main.divide(1, 0));
+```
+
+### **assertAll**
+Gruppiert mehrere Assertions, die unabhängig voneinander geprüft werden.
+
+**Anwendungsfall:**
+```java
+assertAll(
+    () -> assertEquals(4, main.add(2, 2)),
+    () -> assertEquals(0, main.subtract(2, 2))
+);
+```
+
+---
+
+## **Test-Lifecycle-Methoden**
+JUnit bietet Methoden, um den Testzyklus zu steuern:
+
+- **@BeforeEach** / **@AfterEach**: Für Setup und Cleanup pro Test.
+- **@BeforeAll** / **@AfterAll**: Für einmalige Initialisierung und Aufräumen.
+
+### **Anwendungsfall:**
+```java
+@BeforeEach
+public void setUp() {
+    database.connect();
 }
 
+@AfterEach
+public void tearDown() {
+    database.disconnect();
+}
 ```
+
+---
+
+## **Parameterized Tests**
+JUnit ermöglicht das Durchführen von Tests mit unterschiedlichen Eingabewerten.
+
+### **@ParameterizedTest**
+Markiert einen Test als parametrisiert.
+
+### **@ValueSource**
+Gibt eine Liste von Eingabewerten an.
+
+**Anwendungsfall:**
+```java
+@ParameterizedTest
+@ValueSource(ints = {1, 2, 3, 4, 5})
+public void testIsOdd(int number) {
+    assertTrue(number % 2 != 0);
+}
+```
+
+### **@CsvSource**
+Erlaubt die Übergabe von mehreren Werten pro Testlauf.
+
+**Anwendungsfall:**
+```java
+@ParameterizedTest
+@CsvSource({"1, true", "2, false"})
+public void testIsOdd(int number, boolean isOdd) {
+    assertEquals(isOdd, number % 2 != 0);
+}
+```
+
+---
+
+## **Timeouts**
+JUnit unterstützt Zeitlimits für Tests, um lange Ausführungen zu verhindern.
+
+### **@Timeout**
+Legt ein Zeitlimit für den Test fest.
+
+**Anwendungsfall:**
+```java
+@Test
+@Timeout(1) // Test muss innerhalb einer Sekunde abgeschlossen sein
+public void testPerformance() {
+    Thread.sleep(500);
+}
+```
+
+---
 
 ### Verlinkung einer Referenzseite
 Für weitere Details und Beispiele besuchen Sie die [offizielle JUnit-Dokumentation](https://junit.org/junit5/docs/current/user-guide/).
 
 ---
-
 
 # Übung 3: Banken Simulation
 
