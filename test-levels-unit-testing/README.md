@@ -57,8 +57,6 @@
 ## Aufgabe 2
 
 ## 1. **Test-Annotationen**
-> [!NOTE]
-> JUnit verwendet Annotations, um Testfälle und den Setup zu definieren.
 
 ### **@Test**
 Markiert eine Methode als Testmethode.
