@@ -42,6 +42,17 @@
 
 # Unit-Testing
 
+## Aufgabe 1
+### Unsere Tests:
+![image](https://github.com/user-attachments/assets/cf5bea17-4436-4b46-b65e-062c58b42dc9)
+
+### Testen in Entwicklungsumgebung
+![image](https://github.com/user-attachments/assets/6725ebeb-a3d8-454d-92a3-78d0c0123a60)
+
+
+### Maven Test:
+![image](https://github.com/user-attachments/assets/a998b623-5ce7-4356-9e41-37994c2268c0)
+
 
 ## Aufgabe 2
 ### Gängigste JUnit Features
