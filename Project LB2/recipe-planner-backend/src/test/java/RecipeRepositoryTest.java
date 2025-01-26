@@ -1,0 +1,2 @@
+public class RecipeRepositoryTest {
+}
