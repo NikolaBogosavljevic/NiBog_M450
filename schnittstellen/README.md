@@ -25,4 +25,5 @@ Hier testen wir die Erstellung und Eigenschaften von Address-Objekten. Die Tests
 ![image](https://github.com/user-attachments/assets/b4d7ca34-1659-4905-a017-afe4c2f0f589)
 
 ### Test Result
-![image](https://github.com/user-attachments/assets/927056bf-13a0-49ec-be73-3d76dd848531)
+![image](https://github.com/user-attachments/assets/4ffe50f5-ead6-421e-86a1-8e117e1ba1f6)
+
