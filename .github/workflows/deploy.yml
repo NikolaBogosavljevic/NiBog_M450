@@ -22,7 +22,7 @@ jobs:
       run: mvn clean install -DskipTests=true
       working-directory: "Project LB2/recipe-planner-backend"  # Quote the directory path with spaces
 
-    # Step 2: Run Tests
+    # Step 2: Run Backend Tests
     - name: Run Backend Tests
       run: mvn test
       continue-on-error: true  # Continue even if tests fail (optional)
@@ -46,13 +46,13 @@ jobs:
     # Step 5: Install Dependencies for Frontend (Cypress)
     - name: Install Frontend Dependencies
       run: |
-        cd Project LB2/recipe-planner-frontend
+        cd "Project LB2/recipe-planner-frontend"  # Wrap the directory path in quotes
         npm install  # Install dependencies
 
     # Step 6: Run Cypress Tests
     - name: Run Cypress Tests
       run: |
-        cd Project LB2/recipe-planner-frontend
+        cd "Project LB2/recipe-planner-frontend"  # Wrap the directory path in quotes
         npx cypress run  # Run the Cypress tests
 
     # Step 7: Store Cypress Test Results as Artifacts
@@ -60,7 +60,7 @@ jobs:
       uses: actions/upload-artifact@v3  # Updated to v3
       with:
         name: cypress-test-results
-        path: Project LB2/recipe-planner-frontend/cypress/results  # Assuming your Cypress results are stored here
+        path: "Project LB2/recipe-planner-frontend/cypress/results"  # Assuming your Cypress results are stored here
 
     # Step 8: Clean up (optional)
     - name: Clean up
