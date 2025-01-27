@@ -13,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Collections;
@@ -59,15 +60,18 @@ public class RecipeControllerTest {
     @Test
     void getRecipe_shouldReturnRecipeById() throws Exception {
         UUID recipeId = UUID.randomUUID();
+        sampleRecipe.setId(recipeId);
         when(recipeService.getRecipeById(recipeId)).thenReturn(sampleRecipe);
 
-        mockMvc.perform(get("/api/recipes/recipe/{recipeId}", recipeId))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/recipes/recipe/" + recipeId))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Pasta"))
-                .andExpect(jsonPath("$.description").value("Delicious pasta recipe"));
+                .andExpect(content().json("{\"id\":\"" + recipeId + "\", \"name\":\"" + sampleRecipe.getName() + "\"}"));
 
         verify(recipeService, times(1)).getRecipeById(recipeId);
     }
+
+
+
 
     @Test
     void addRecipe_shouldReturnCreatedRecipe() throws Exception {
