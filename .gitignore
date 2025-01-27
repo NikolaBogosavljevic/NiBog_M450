@@ -34,3 +34,6 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+
+# Recipe Planner Target Directory
+Project LB2/recipe-planner-backend/target/
