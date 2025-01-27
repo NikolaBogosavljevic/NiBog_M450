@@ -5,6 +5,10 @@ on:
     branches:
       - main  # Trigger on pushes to the main branch
 
+permissions:
+  contents: write  # Allow write access to repository contents, which is necessary to push
+  pages: write     # Allow write access to GitHub Pages
+
 jobs:
   build:
     runs-on: ubuntu-latest  # Use the latest Ubuntu environment
@@ -36,7 +40,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3  # Action for deploying to GitHub Pages
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}  # Use the GitHub token provided by Actions
-        publish_dir: "Project LB2/recipe-planner-backend/target/test-classes"  # Quote the path
+        publish_dir: "Project LB2/recipe-planner-backend/target/test-classes"  # Folder with test results
         publish_branch: gh-pages  # The branch that GitHub Pages uses
 
     # Step 5: Clean up (optional)
