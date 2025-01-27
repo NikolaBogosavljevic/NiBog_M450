@@ -3,42 +3,44 @@ stages:
   - test
   - deploy
 
-# Build Stage
-build:
+# Build Stage - Build the backend project
+build_backend:
   stage: build
   image: maven:3.8.4-openjdk-11
   script:
-    - mvn clean install -DskipTests=true
+    - mvn clean install -DskipTests=true  # Build the project, skipping tests
   artifacts:
     paths:
-      - target/test-classes  # Store the test classes as artifacts
+      - target/test-classes  # Store any generated test classes or build artifacts (e.g., jar files)
   only:
-    - main  # Trigger only on main branch
+    - main  # Trigger the build on the main branch
 
-# Test Stage
-test:
+# Test Stage - Run the tests and store the results
+test_backend:
   stage: test
   image: maven:3.8.4-openjdk-11
   script:
-    - mvn test
+    - mvn test  # Run the unit tests
   artifacts:
     paths:
-      - target/test-classes  # Store the test classes
+      - target/test-classes  # Save test classes (optional)
     reports:
-      junit: target/test-classes/*.xml  # Store test results as a JUnit report
+      junit: target/test-classes/*.xml  # Save JUnit test results as reports (GitLab will display these)
   only:
-    - main  # Trigger only on main branch
+    - main  # Trigger the tests on the main branch
 
-# Deploy Stage
+# Deploy Stage - Publish the test results using GitLab Pages
 deploy:
   stage: deploy
   script:
-    - echo "Deploying to GitLab Pages..."  # Optional, add specific deploy commands if needed
+    - echo "Deploying test results to GitLab Pages..."
+    - mv target/test-classes public/test-results  # Move test results to the public directory
   only:
-    - main  # Trigger only on main branch
+    - main  # Trigger deploy only on the main branch
   artifacts:
     paths:
-      - public  # GitLab Pages expects this directory for deployment
+      - public  # GitLab Pages expects the content to be in the 'public' directory
   environment:
     name: production
-    url: https://yourgitlabpagesusername.gitlab.io/yourrepositoryname  # Update this URL with your details
+    url: https://NikolaBogosavljevic.gitlab.io/NiBog_M450
+  # Replace with your actual GitLab Pages URL
