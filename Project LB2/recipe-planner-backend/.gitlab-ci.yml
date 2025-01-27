@@ -1,0 +1,44 @@
+stages:
+  - build
+  - test
+  - deploy
+
+# Build Stage
+build:
+  stage: build
+  image: maven:3.8.4-openjdk-11
+  script:
+    - mvn clean install -DskipTests=true
+  artifacts:
+    paths:
+      - target/test-classes  # Store the test classes as artifacts
+  only:
+    - main  # Trigger only on main branch
+
+# Test Stage
+test:
+  stage: test
+  image: maven:3.8.4-openjdk-11
+  script:
+    - mvn test
+  artifacts:
+    paths:
+      - target/test-classes  # Store the test classes
+    reports:
+      junit: target/test-classes/*.xml  # Store test results as a JUnit report
+  only:
+    - main  # Trigger only on main branch
+
+# Deploy Stage
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying to GitLab Pages..."  # Optional, add specific deploy commands if needed
+  only:
+    - main  # Trigger only on main branch
+  artifacts:
+    paths:
+      - public  # GitLab Pages expects this directory for deployment
+  environment:
+    name: production
+    url: https://yourgitlabpagesusername.gitlab.io/yourrepositoryname  # Update this URL with your details
