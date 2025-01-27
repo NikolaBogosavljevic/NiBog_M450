@@ -1,0 +1,36 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - echo "Building the project..."
+    - mvn clean compile
+  only:
+    - main
+
+test:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - mvn test
+  artifacts:
+    when: always
+    paths:
+      - target/surefire-reports/
+  only:
+    - main
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Publishing test results..."
+    - mkdir -p public
+    - cp -r target/surefire-reports/* public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
