@@ -23,16 +23,16 @@ jobs:
       working-directory: "Project LB2/recipe-planner-backend"  # Quote the directory path with spaces
 
     # Step 2: Run Tests
-    - name: Run Tests
+    - name: Run Backend Tests
       run: mvn test
       continue-on-error: true  # Continue even if tests fail (optional)
       working-directory: "Project LB2/recipe-planner-backend"  # Quote the directory path with spaces
 
-    # Step 3: Store Test Results as Artifacts
-    - name: Store Test Results
+    # Step 3: Store Backend Test Results as Artifacts
+    - name: Store Backend Test Results
       uses: actions/upload-artifact@v3  # Updated to v3
       with:
-        name: test-results
+        name: backend-test-results
         path: "Project LB2/recipe-planner-backend/target/test-classes"  # Quote the path
 
     # Step 4: Deploy to GitHub Pages
@@ -43,6 +43,25 @@ jobs:
         publish_dir: "Project LB2/recipe-planner-backend/target/test-classes"  # Folder with test results
         publish_branch: gh-pages  # The branch that GitHub Pages uses
 
-    # Step 5: Clean up (optional)
+    # Step 5: Install Dependencies for Frontend (Cypress)
+    - name: Install Frontend Dependencies
+      run: |
+        cd Project LB2/recipe-planner-frontend
+        npm install  # Install dependencies
+
+    # Step 6: Run Cypress Tests
+    - name: Run Cypress Tests
+      run: |
+        cd Project LB2/recipe-planner-frontend
+        npx cypress run  # Run the Cypress tests
+
+    # Step 7: Store Cypress Test Results as Artifacts
+    - name: Store Cypress Test Results
+      uses: actions/upload-artifact@v3  # Updated to v3
+      with:
+        name: cypress-test-results
+        path: Project LB2/recipe-planner-frontend/cypress/results  # Assuming your Cypress results are stored here
+
+    # Step 8: Clean up (optional)
     - name: Clean up
       run: git checkout main  # Switch back to main branch after deployment
