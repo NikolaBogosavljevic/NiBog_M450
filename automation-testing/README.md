@@ -8,7 +8,8 @@
 
 ## Aufgabe 2
 
-![cypress](https://github.com/user-attachments/assets/d96d35ac-d757-4534-853a-33d13385d4dc)
+![cypress](https://github.com/user-attachments/assets/5e9585c7-08f4-4e92-b456-bca5596ef38f)
+
 
 ### Tool
 Für die End-To-End-Tests wurde **Cypress** verwendet.
@@ -62,4 +63,5 @@ Das Ziel war es, das Backend durch erhöhten Traffic zu belasten und die Funktio
    - **POST /addstudents**: Alle Anfragen wurden erfolgreich verarbeitet, und neue Studenten wurden hinzugefügt.
    - **GET /students**: Die Abfragen haben zuverlässig die vollständige Liste zurückgegeben, inklusive der neu hinzugefügten Studenten.
    - Das Backend konnte den Traffic gut verarbeiten, es gab keine Timeout-Fehler oder Abstürze.
+
 
